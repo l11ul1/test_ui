@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AppBarWidget extends StatelessWidget {
+class AppBarContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double parentHeight = MediaQuery.of(context).padding.top;
