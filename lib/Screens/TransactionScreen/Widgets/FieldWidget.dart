@@ -13,7 +13,7 @@ class FieldWidget extends StatelessWidget {
       children: [
         Text(label,
             style: TextStyle(
-                color: Colors.black,
+                color: Color(0xFF6e6e6e),
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0)),
         Text(value,

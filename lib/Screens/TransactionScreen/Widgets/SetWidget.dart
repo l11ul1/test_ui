@@ -16,7 +16,7 @@ class SetWidget extends StatelessWidget {
           Row(children: [
             Text(setName,
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xFF6e6e6e),
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0)),
           ]),

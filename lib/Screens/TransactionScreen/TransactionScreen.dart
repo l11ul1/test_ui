@@ -9,7 +9,7 @@ class TransactionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
-      slivers: [
+        slivers: [
         AppBarWidget(),
         SliverToBoxAdapter(
           child: FormWidget(),
