@@ -4,7 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/AppBarWidget.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/FormWidget.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/SetWidget.dart';
-import 'Redux/MIddleware.dart';
+import 'Redux/Middleware.dart';
 import 'Redux/Store.dart';
 
 class TransactionScreen extends StatelessWidget {
