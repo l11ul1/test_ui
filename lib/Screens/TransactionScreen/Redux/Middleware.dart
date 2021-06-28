@@ -27,7 +27,7 @@ ThunkAction<AppState> getJsonValuesAsync(){
       print(responseMap["result"]["resultData"]);
       store.dispatch(GetJsonAction(responseMap["result"]["resultData"]));
     } catch(e) {
-      print("Fuck off");
+      print("failed with $e");
       store.dispatch("Failed to get args");
     }
   };
