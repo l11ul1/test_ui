@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 import 'FieldWidget.dart';
 
 class FormWidget extends StatelessWidget{
+  final String from;
+  final String to;
+  final String txId;
+  final String note;
+
+  FormWidget({this.from, this.to, this.txId, this.note});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +24,10 @@ class FormWidget extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            FieldWidget(label: "From", value: "0x867"),
-            FieldWidget(label: "To", value: "0x671"),
-            FieldWidget(label: "TX ID", value: "0x323"),
-            FieldWidget(label: "Note", value: "InputArgs[5]"),
+            FieldWidget(label: "From", value: from),
+            FieldWidget(label: "To", value: to),
+            FieldWidget(label: "TX ID", value: txId),
+            FieldWidget(label: "Note", value: note),
           ],
         )
     );

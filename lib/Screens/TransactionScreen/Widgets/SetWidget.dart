@@ -29,6 +29,9 @@ class SetWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Color(0xFFE3E4E6),
                     borderRadius: BorderRadius.circular(20.0)),
+                child: Center(
+                  child: Text("Hello"),
+                ),
               ),
             ],
           )

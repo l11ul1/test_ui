@@ -1,48 +1,36 @@
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/AppBarWidget.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/FormWidget.dart';
 import 'package:ubexlab_test_ui/Screens/TransactionScreen/Widgets/SetWidget.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
+import 'Redux/MIddleware.dart';
+import 'Redux/Store.dart';
 
 class TransactionScreen extends StatelessWidget {
-  void getData() async {
-    Uri url = Uri.parse("http://13.209.43.204:5080/block");
-    var headers = {"Content-Type" : "Application/json-rpc"};
-    var body = json.encode({
-      "jsonrpc": "2.0",
-      "id": "00456",
-      "method": "getTransaction",
-      "params": {
-        "transactionId":
-            "6a28e00918a51336fb09e6f01ce9c056fd9eb452c0701d517c5f1db555ca5821"
-      }
-    });
-    var response = await http.post(url, headers: headers, body: body);
-    Map<String, dynamic> responseMap = json.decode(response.body);
-    print(responseMap);
-  }
-
   @override
   Widget build(BuildContext context) {
+    StoreProvider.of<AppState>(context).dispatch(getJsonValuesAsync());
     return Scaffold(
-        body: CustomScrollView(
-        slivers: [
-        AppBarWidget(),
-        SliverToBoxAdapter(
-          child: FormWidget(),
-        ),
-        SliverToBoxAdapter(
-            child: SetWidget(
-          setName: "Read Set",
-        )),
-        SliverToBoxAdapter(
-            child: SetWidget(
-          setName: "Write Set",
-        )),
-      ],
-    ));
+        body: StoreConnector<AppState, AppState>(
+            converter: (store) => store.state,
+            builder: (context, state) => Scaffold(
+                body: CustomScrollView(slivers: [
+                  AppBarWidget(id: state.json["transactionID"],status: state.json["chaincodeInputArgs"][0] , amount: state.json["chaincodeInputArgs"][4] + ' ' + state.json["chaincodeInputArgs"][2],),
+                  SliverToBoxAdapter(
+                    child: FormWidget(from: state.json["chaincodeInputArgs"][1], to: state.json["chaincodeInputArgs"][3], txId: "Test", note: state.json["chaincodeInputArgs"][5]),
+                  ),
+                  SliverToBoxAdapter(child: SetWidget(
+                    setName: "Read Set",
+                  )
+                  ),
+                  SliverToBoxAdapter(child: SetWidget(
+                    setName: "Write Set",
+                  )
+                  ),
+                  SliverToBoxAdapter(
+                    child: SizedBox(height: 50.0),
+                  ),
+                ]))));
   }
 }

@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppBarContentWidget extends StatelessWidget {
+  final String status;
+  final String amount;
+
+  AppBarContentWidget({this.status, this.amount});
+
   @override
   Widget build(BuildContext context) {
     final double parentHeight = MediaQuery.of(context).padding.top;
@@ -15,7 +20,7 @@ class AppBarContentWidget extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.arrow_circle_up_rounded, color: Colors.black),
-                  Text("Sent",
+                  Text(status,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -25,7 +30,7 @@ class AppBarContentWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text("1234566 LTC",
+                  Text(amount,
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

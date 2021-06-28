@@ -11,16 +11,22 @@ class FieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(label,
-            style: TextStyle(
-                color: Color(0xFF6e6e6e),
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0)),
-        Text(value,
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0)),
+        SizedBox(
+          width: 150.0,
+          child: Text(label,
+              style: TextStyle(
+                  color: Color(0xFF6e6e6e),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0)),
+        ),
+
+        Expanded(
+          child: Text(value, maxLines: 1,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0)),
+        ),
       ],
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
